@@ -14,7 +14,6 @@ namespace DB.Data
             using (var context = new Context(
                 serviceProvider.GetRequiredService<DbContextOptions<Context>>()))
             {
-                SeedWorkers(context);
                 SeedFood(context);
                 SeedIllneses(context);
                 SeedVaccinations(context);
@@ -22,6 +21,7 @@ namespace DB.Data
                 SeedMeals(context);
                 SeedMenus(context);
                 SeedAnimals(context);
+                SeedWorkers(context);
                 SeedSuppliers(context);
                 SeedTrades(context);
             }
@@ -41,7 +41,14 @@ namespace DB.Data
                         Age = 26,
                         Occupation = Worker.Job.Vet,
                         Payrate = 90000,
-                        DateJoined = new DateTime(2020, 11, 08)
+                        DateJoined = new DateTime(2020, 11, 08),
+                        Animals = new List<Animal>
+                        {
+                            context.Animals.Where(a => a.Id == 1).FirstOrDefault(),
+                            context.Animals.Where(a => a.Id == 3).FirstOrDefault(),
+                            context.Animals.Where(a => a.Id == 6).FirstOrDefault(),
+                            context.Animals.Where(a => a.Id == 9).FirstOrDefault()
+                        }
                     },
                     new Worker()
                     {
@@ -52,7 +59,12 @@ namespace DB.Data
                         Age = 23,
                         Occupation = Worker.Job.Cleaner,
                         Payrate = 50000,
-                        DateJoined = new DateTime(2019, 04, 10)
+                        DateJoined = new DateTime(2019, 04, 10),
+                        Animals = new List<Animal>
+                        {
+                            context.Animals.Where(a => a.Id == 2).FirstOrDefault(),
+                            context.Animals.Where(a => a.Id == 4).FirstOrDefault()
+                        }
                     },
                     new Worker()
                     {
@@ -63,7 +75,12 @@ namespace DB.Data
                         Age = 31,
                         Occupation = Worker.Job.Cleaner,
                         Payrate = 50000,
-                        DateJoined = new DateTime(2021, 02, 03)
+                        DateJoined = new DateTime(2021, 02, 03),
+                        Animals = new List<Animal>
+                        {
+                            context.Animals.Where(a => a.Id == 7).FirstOrDefault(),
+                            context.Animals.Where(a => a.Id == 8).FirstOrDefault()
+                        }
                     },
                     new Worker()
                     {
@@ -85,7 +102,12 @@ namespace DB.Data
                         Age = 34,
                         Occupation = Worker.Job.Administrator,
                         Payrate = 60000,
-                        DateJoined = new DateTime(2018, 06, 05)
+                        DateJoined = new DateTime(2018, 06, 05),
+                        Animals = new List<Animal>
+                        {
+                            context.Animals.Where(a => a.Id == 11).FirstOrDefault(),
+                            context.Animals.Where(a => a.Id == 13).FirstOrDefault()
+                        }
                     },
                     new Worker()
                     {
@@ -96,7 +118,13 @@ namespace DB.Data
                         Age = 40,
                         Occupation = Worker.Job.Trainer,
                         Payrate = 65000,
-                        DateJoined = new DateTime(2020, 07, 11)
+                        DateJoined = new DateTime(2020, 07, 11),
+                        Animals = new List<Animal>
+                        {
+                            context.Animals.Where(a => a.Id == 5).FirstOrDefault(),
+                            context.Animals.Where(a => a.Id == 10).FirstOrDefault(),
+                            context.Animals.Where(a => a.Id == 12).FirstOrDefault()
+                        }
                     }
                 );
 
@@ -110,6 +138,7 @@ namespace DB.Data
             {
                 context.Foods.AddRange(
                     new Food() { Type = Food.FoodType.Birds },
+                    new Food() { Type = Food.FoodType.Fish },
                     new Food() { Type = Food.FoodType.FishFood },
                     new Food() { Type = Food.FoodType.Fruit },
                     new Food() { Type = Food.FoodType.Grains },
@@ -852,13 +881,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2016, 07, 01),
                         NeedsRelocation = true,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 1).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 1).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 2).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 6).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 1).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -874,16 +897,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2015, 11, 03),
                         NeedsRelocation = false,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 2).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 2).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 3).FirstOrDefault()
-                        }, 
-                        Children = new List<Animal>
-                        {
-                            context.Animals.Where(a => a.Id == 13).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 2).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -900,12 +914,6 @@ namespace DB.Data
                         NeedsRelocation = false,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 3).FirstOrDefault(),
                         Menu = context.Menus.Where(m => m.Id == 3).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 2).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 3).FirstOrDefault()
-                        }
                     },
                     new Animal()
                     {
@@ -921,13 +929,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2020, 3, 11),
                         NeedsRelocation = false,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 4).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 4).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 2).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 3).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 4).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -943,13 +945,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2018, 10, 01),
                         NeedsRelocation = false,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 5).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 10).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 3).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 6).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 10).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -965,13 +961,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2017, 01, 06),
                         NeedsRelocation = true,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 6).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 5).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 3).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 6).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 5).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -987,13 +977,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2017, 01, 06),
                         NeedsRelocation = true,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 7).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 11).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 2).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 6).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 11).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -1009,12 +993,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2021, 02, 13),
                         NeedsRelocation = false,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 8).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 12).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 3).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 12).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -1030,13 +1009,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2020, 08, 14),
                         NeedsRelocation = false,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 9).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 13).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 3).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 6).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 13).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -1052,12 +1025,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2021, 05, 14),
                         NeedsRelocation = true,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 10).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 7).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 3).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 7).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -1073,13 +1041,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2018, 03, 14),
                         NeedsRelocation = false,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 11).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 8).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 2).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 6).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 8).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -1095,13 +1057,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2017, 07, 25),
                         NeedsRelocation = true,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 12).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 9).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 2).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 6).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 9).FirstOrDefault()
                     },
                     new Animal()
                     {
@@ -1117,12 +1073,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2019, 03, 05),
                         NeedsRelocation = false,
                         MedicalRecord = context.MedicalRecords.Where(m => m.Id == 13).FirstOrDefault(),
-                        Menu = context.Menus.Where(m => m.Id == 6).FirstOrDefault(),
-                        Workers = new List<Worker>
-                        {
-                            context.Workers.Where(w => w.Id == 1).FirstOrDefault(),
-                            context.Workers.Where(w => w.Id == 2).FirstOrDefault()
-                        }
+                        Menu = context.Menus.Where(m => m.Id == 6).FirstOrDefault()
                     }
                 );
 

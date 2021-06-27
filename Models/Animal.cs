@@ -68,7 +68,5 @@ namespace DB.Models
         public Menu Menu { get; set; }
 
         public ICollection<Animal> Children { get; set; }
-
-        public ICollection<Worker> Workers { get; set; }
     }
 }

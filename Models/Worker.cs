@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -46,5 +47,8 @@ namespace DB.Models
 
         [Required]
         public DateTime DateJoined { get; set; }
+
+        [Required]
+        public ICollection<Animal> Animals { get; set; }
     }
 }
