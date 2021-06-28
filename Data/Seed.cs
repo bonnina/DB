@@ -45,9 +45,7 @@ namespace DB.Data
                         Animals = new List<Animal>
                         {
                             context.Animals.Where(a => a.Id == 1).FirstOrDefault(),
-                            context.Animals.Where(a => a.Id == 3).FirstOrDefault(),
-                            context.Animals.Where(a => a.Id == 6).FirstOrDefault(),
-                            context.Animals.Where(a => a.Id == 9).FirstOrDefault()
+                            context.Animals.Where(a => a.Id == 3).FirstOrDefault()
                         }
                     },
                     new Worker()
@@ -78,8 +76,7 @@ namespace DB.Data
                         DateJoined = new DateTime(2021, 02, 03),
                         Animals = new List<Animal>
                         {
-                            context.Animals.Where(a => a.Id == 7).FirstOrDefault(),
-                            context.Animals.Where(a => a.Id == 8).FirstOrDefault()
+                            context.Animals.Where(a => a.Id == 7).FirstOrDefault()
                         }
                     },
                     new Worker()
@@ -122,7 +119,63 @@ namespace DB.Data
                         Animals = new List<Animal>
                         {
                             context.Animals.Where(a => a.Id == 5).FirstOrDefault(),
-                            context.Animals.Where(a => a.Id == 10).FirstOrDefault(),
+                            context.Animals.Where(a => a.Id == 10).FirstOrDefault()
+                        }
+                    },
+                    new Worker()
+                    {
+                        Id = 7,
+                        FirstName = "Tom",
+                        LastName = "Clark",
+                        Gender = Worker.Sex.Male,
+                        Age = 27,
+                        Occupation = Worker.Job.Vet,
+                        Payrate = 90000,
+                        DateJoined = new DateTime(2020, 11, 10),
+                        Animals = new List<Animal>
+                        {
+                            context.Animals.Where(a => a.Id == 6).FirstOrDefault(),
+                            context.Animals.Where(a => a.Id == 9).FirstOrDefault()
+                        }
+                    },
+                    new Worker()
+                    {
+                        Id = 8,
+                        FirstName = "Jim",
+                        LastName = "Wans",
+                        Gender = Worker.Sex.Male,
+                        Age = 39,
+                        Occupation = Worker.Job.Cleaner,
+                        Payrate = 52000,
+                        DateJoined = new DateTime(2017, 10, 13)
+                    },
+                    new Worker()
+                    {
+                        Id = 9,
+                        FirstName = "Kate",
+                        LastName = "Bardwell",
+                        Gender = Worker.Sex.Female,
+                        Age = 30,
+                        Occupation = Worker.Job.Cleaner,
+                        Payrate = 51000,
+                        DateJoined = new DateTime(2016, 04, 04),
+                        Animals = new List<Animal>
+                        {
+                            context.Animals.Where(a => a.Id == 8).FirstOrDefault()
+                        }
+                    },
+                    new Worker()
+                    {
+                        Id = 10,
+                        FirstName = "Bob",
+                        LastName = "Brado",
+                        Gender = Worker.Sex.Male,
+                        Age = 21,
+                        Occupation = Worker.Job.Trainer,
+                        Payrate = 65000,
+                        DateJoined = new DateTime(2019, 11, 14),
+                        Animals = new List<Animal>
+                        {
                             context.Animals.Where(a => a.Id == 12).FirstOrDefault()
                         }
                     }
