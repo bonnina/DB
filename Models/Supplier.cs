@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DB.Models
@@ -11,6 +12,11 @@ namespace DB.Models
         public string Name { get; set; }
 
         [Required]
+        public DateTime DateJoined { get; set; }
+
+        [Required]
         public ICollection<Food> Food { get; set; }
+
+        public ICollection<Delivery> Deliveries { get; set; }
     }
 }
