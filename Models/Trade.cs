@@ -11,6 +11,7 @@ namespace DB.Models
             Recieved
         }
 
+        [Required]
         public int Id { get; set; }
 
         [Required, StringLength(24)]

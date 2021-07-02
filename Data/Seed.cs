@@ -22,6 +22,7 @@ namespace DB.Data
                 SeedMenus(context);
                 SeedAnimals(context);
                 SeedWorkers(context);
+                SeedDeliveries(context);
                 SeedSuppliers(context);
                 SeedTrades(context);
             }
@@ -1134,6 +1135,209 @@ namespace DB.Data
             }
         }
 
+        public static void SeedDeliveries(Context context)
+        {
+            if (!context.Deliveries.Any())
+            {
+                context.Deliveries.AddRange(
+                    new Delivery()
+                    {
+                        Id = 1,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Fish).FirstOrDefault(),
+                        Amount = 127.5,
+                        Price = 4,
+                        Date = new DateTime(2019, 04, 11)
+                    },
+                    new Delivery()
+                    {
+                        Id = 2,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Fish).FirstOrDefault(),
+                        Amount = 165,
+                        Price = 4,
+                        Date = new DateTime(2019, 07, 08)
+                    },
+                    new Delivery()
+                    {
+                        Id = 3,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Fish).FirstOrDefault(),
+                        Amount = 165,
+                        Price = 4,
+                        Date = new DateTime(2020, 06, 08)
+                    },
+                    new Delivery()
+                    {
+                        Id = 4,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Fish).FirstOrDefault(),
+                        Amount = 165,
+                        Price = 4,
+                        Date = new DateTime(2020, 10, 17)
+                    },
+                    new Delivery()
+                    {
+                        Id = 5,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.FishFood).FirstOrDefault(),
+                        Amount = 20,
+                        Price = 5,
+                        Date = new DateTime(2019, 01, 01)
+                    },
+                    new Delivery()
+                    {
+                        Id = 6,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.FishFood).FirstOrDefault(),
+                        Amount = 20,
+                        Price = 5,
+                        Date = new DateTime(2019, 01, 01)
+                    },
+                    new Delivery()
+                    {
+                        Id = 7,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.FishFood).FirstOrDefault(),
+                        Amount = 25,
+                        Price = 5,
+                        Date = new DateTime(2019, 07, 29)
+                    },
+                    new Delivery()
+                    {
+                        Id = 8,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Grains).FirstOrDefault(),
+                        Amount = 200,
+                        Price = 3,
+                        Date = new DateTime(2019, 09, 10)
+                    },
+                    new Delivery()
+                    {
+                        Id = 9,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Grains).FirstOrDefault(),
+                        Amount = 300,
+                        Price = 3,
+                        Date = new DateTime(2020, 02, 11)
+                    },
+                    new Delivery()
+                    {
+                        Id = 10,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Grains).FirstOrDefault(),
+                        Amount = 172,
+                        Price = 4,
+                        Date = new DateTime(2020, 06, 24)
+                    },
+                    new Delivery()
+                    {
+                        Id = 11,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Fruit).FirstOrDefault(),
+                        Amount = 100,
+                        Price = 12,
+                        Date = new DateTime(2020, 03, 15)
+                    },
+                    new Delivery()
+                    {
+                        Id = 12,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Fruit).FirstOrDefault(),
+                        Amount = 100,
+                        Price = 12,
+                        Date = new DateTime(2020, 03, 15)
+                    },
+                    new Delivery()
+                    {
+                        Id = 13,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Vegetables).FirstOrDefault(),
+                        Amount = 224,
+                        Price = 8,
+                        Date = new DateTime(2020, 04, 04)
+                    },
+                    new Delivery()
+                    {
+                        Id = 14,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Meat).FirstOrDefault(),
+                        Amount = 60,
+                        Price = 11,
+                        Date = new DateTime(2018, 09, 10)
+                    },
+                    new Delivery()
+                    {
+                        Id = 15,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Meat).FirstOrDefault(),
+                        Amount = 90,
+                        Price = 10,
+                        Date = new DateTime(2019, 11, 10)
+                    },
+                    new Delivery()
+                    {
+                        Id = 16,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Birds).FirstOrDefault(),
+                        Amount = 30,
+                        Price = 12,
+                        Date = new DateTime(2019, 08, 05)
+                    },
+                    new Delivery()
+                    {
+                        Id = 17,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Birds).FirstOrDefault(),
+                        Amount = 20,
+                        Price = 12,
+                        Date = new DateTime(2019, 09, 30)
+                    },
+                    new Delivery()
+                    {
+                        Id = 18,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Grass).FirstOrDefault(),
+                        Amount = 500,
+                        Price = 0,
+                        Date = new DateTime(2018, 07, 02)
+                    },
+                    new Delivery()
+                    {
+                        Id = 19,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Grass).FirstOrDefault(),
+                        Amount = 700,
+                        Price = 0,
+                        Date = new DateTime(2019, 08, 02)
+                    },
+                    new Delivery()
+                    {
+                        Id = 20,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Grass).FirstOrDefault(),
+                        Amount = 600,
+                        Price = 0,
+                        Date = new DateTime(2020, 08, 09)
+                    },
+                    new Delivery()
+                    {
+                        Id = 21,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Hay).FirstOrDefault(),
+                        Amount = 500,
+                        Price = 0,
+                        Date = new DateTime(2018, 08, 03)
+                    },
+                    new Delivery()
+                    {
+                        Id = 22,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Hay).FirstOrDefault(),
+                        Amount = 550,
+                        Price = 0,
+                        Date = new DateTime(2019, 07, 04)
+                    },
+                    new Delivery()
+                    {
+                        Id = 23,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Hay).FirstOrDefault(),
+                        Amount = 600,
+                        Price = 0,
+                        Date = new DateTime(2020, 06, 20)
+                    },
+                    new Delivery()
+                    {
+                        Id = 24,
+                        Product = context.Foods.Where(f => f.Type == Food.FoodType.Insects).FirstOrDefault(),
+                        Amount = 50,
+                        Price = 0,
+                        Date = new DateTime(2020, 06, 21)
+                    }
+                );
+
+                context.SaveChanges();
+            }
+        }
+
         public static void SeedSuppliers(Context context)
         {
             if (!context.Suppliers.Any())
@@ -1146,6 +1350,16 @@ namespace DB.Data
                         {
                             context.Foods.Where(f => f.Type == Food.FoodType.Fish).FirstOrDefault(),
                             context.Foods.Where(f => f.Type == Food.FoodType.FishFood).FirstOrDefault()
+                        },
+                        Deliveries = new List<Delivery>
+                        {
+                            context.Deliveries.Where(d => d.Id == 1).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 2).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 3).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 4).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 5).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 6).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 7).FirstOrDefault()
                         }
                     },
                     new Supplier()
@@ -1154,6 +1368,12 @@ namespace DB.Data
                         Food = new List<Food>
                         {
                             context.Foods.Where(f => f.Type == Food.FoodType.Grains).FirstOrDefault()
+                        },
+                        Deliveries = new List<Delivery>
+                        {
+                            context.Deliveries.Where(d => d.Id == 8).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 9).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 10).FirstOrDefault()
                         }
                     },
                     new Supplier()
@@ -1163,6 +1383,11 @@ namespace DB.Data
                         {
                             context.Foods.Where(f => f.Type == Food.FoodType.Fruit).FirstOrDefault(),
                             context.Foods.Where(f => f.Type == Food.FoodType.Vegetables).FirstOrDefault()
+                        },
+                        Deliveries = new List<Delivery>
+                        {
+                            context.Deliveries.Where(d => d.Id == 12).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 13).FirstOrDefault()
                         }
                     },
                     new Supplier()
@@ -1171,6 +1396,11 @@ namespace DB.Data
                         Food = new List<Food>
                         {
                             context.Foods.Where(f => f.Type == Food.FoodType.Meat).FirstOrDefault()
+                        },
+                        Deliveries = new List<Delivery>
+                        {
+                            context.Deliveries.Where(d => d.Id == 14).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 15).FirstOrDefault()
                         }
                     },
                     new Supplier()
@@ -1179,6 +1409,31 @@ namespace DB.Data
                         Food = new List<Food>
                         {
                             context.Foods.Where(f => f.Type == Food.FoodType.Birds).FirstOrDefault()
+                        },
+                        Deliveries = new List<Delivery>
+                        {
+                            context.Deliveries.Where(d => d.Id == 16).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 17).FirstOrDefault()
+                        }
+                    },
+                    new Supplier()
+                    {
+                        Name = "Self",
+                        Food = new List<Food>
+                        {
+                            context.Foods.Where(f => f.Type == Food.FoodType.Grass).FirstOrDefault(),
+                            context.Foods.Where(f => f.Type == Food.FoodType.Hay).FirstOrDefault(),
+                            context.Foods.Where(f => f.Type == Food.FoodType.Insects).FirstOrDefault()
+                        },
+                        Deliveries = new List<Delivery>
+                        {
+                            context.Deliveries.Where(d => d.Id == 18).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 19).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 20).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 21).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 22).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 23).FirstOrDefault(),
+                            context.Deliveries.Where(d => d.Id == 24).FirstOrDefault()
                         }
                     }
                 );

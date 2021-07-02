@@ -23,6 +23,7 @@ namespace DB.Models
             Other
         }
 
+        [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 

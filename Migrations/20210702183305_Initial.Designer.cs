@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DB.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210628203114_Initial")]
+    [Migration("20210702183305_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,6 +83,35 @@ namespace DB.Migrations
                     b.HasIndex("WorkerId");
 
                     b.ToTable("Animals");
+                });
+
+            modelBuilder.Entity("DB.Models.Delivery", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SupplierId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("Deliveries");
                 });
 
             modelBuilder.Entity("DB.Models.Food", b =>
@@ -193,6 +222,9 @@ namespace DB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateJoined")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -311,6 +343,19 @@ namespace DB.Migrations
                     b.Navigation("Menu");
                 });
 
+            modelBuilder.Entity("DB.Models.Delivery", b =>
+                {
+                    b.HasOne("DB.Models.Food", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("DB.Models.Supplier", null)
+                        .WithMany("Deliveries")
+                        .HasForeignKey("SupplierId");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("DB.Models.Food", b =>
                 {
                     b.HasOne("DB.Models.Supplier", null)
@@ -373,6 +418,8 @@ namespace DB.Migrations
 
             modelBuilder.Entity("DB.Models.Supplier", b =>
                 {
+                    b.Navigation("Deliveries");
+
                     b.Navigation("Food");
                 });
 

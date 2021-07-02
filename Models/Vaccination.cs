@@ -14,6 +14,7 @@ namespace DB.Models
             Tetanus
         }
 
+        [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 

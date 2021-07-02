@@ -6,6 +6,7 @@ namespace DB.Models
 {
     public class Meal
     {
+        [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 

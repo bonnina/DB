@@ -6,6 +6,7 @@ namespace DB.Models
 {
     public class Supplier
     {
+        [Required]
         public int Id { get; set; }
 
         [Required, StringLength(24)]

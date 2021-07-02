@@ -27,6 +27,7 @@ namespace DB.Models
             Female
         }
 
+        [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 

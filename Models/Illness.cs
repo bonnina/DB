@@ -25,6 +25,7 @@ namespace DB.Models
             Parasites
         }
 
+        [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 

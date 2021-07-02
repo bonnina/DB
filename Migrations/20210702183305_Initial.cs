@@ -38,7 +38,8 @@ namespace DB.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(24)", maxLength: 24, nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(24)", maxLength: 24, nullable: false),
+                    DateJoined = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -175,6 +176,34 @@ namespace DB.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Deliveries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: true),
+                    Amount = table.Column<double>(type: "float", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SupplierId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Deliveries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Deliveries_Foods_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Foods",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Deliveries_Suppliers_SupplierId",
+                        column: x => x.SupplierId,
+                        principalTable: "Suppliers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Meals",
                 columns: table => new
                 {
@@ -244,6 +273,16 @@ namespace DB.Migrations
                 column: "WorkerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Deliveries_ProductId",
+                table: "Deliveries",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Deliveries_SupplierId",
+                table: "Deliveries",
+                column: "SupplierId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Foods_SupplierId",
                 table: "Foods",
                 column: "SupplierId");
@@ -276,6 +315,9 @@ namespace DB.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Deliveries");
+
             migrationBuilder.DropTable(
                 name: "Illnesses");
 

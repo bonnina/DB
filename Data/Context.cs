@@ -15,6 +15,7 @@ namespace DB.Data
         public DbSet<Meal> Meals { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Food> Foods { get; set; }
+        public DbSet<Delivery> Deliveries { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<MedicalRecord> MedicalRecords { get; set; }
         public DbSet<Illness> Illnesses { get; set; }

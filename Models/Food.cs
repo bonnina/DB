@@ -19,6 +19,7 @@ namespace DB.Models
             Grains
         }
 
+        [Required]
         public int Id { get; set; }
 
         [Required]

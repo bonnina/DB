@@ -7,6 +7,7 @@ namespace DB.Models
 {
     public class MedicalRecord
     {
+        [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
