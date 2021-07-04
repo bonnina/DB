@@ -136,6 +136,7 @@ namespace DB.Migrations
                     Gender = table.Column<int>(type: "int", nullable: false),
                     Age = table.Column<double>(type: "float", nullable: false),
                     Weight = table.Column<double>(type: "float", nullable: false),
+                    Height = table.Column<double>(type: "float", nullable: false),
                     ClimatZone = table.Column<int>(type: "int", nullable: false),
                     DietType = table.Column<int>(type: "int", nullable: false),
                     EnclosureNumber = table.Column<int>(type: "int", nullable: false),

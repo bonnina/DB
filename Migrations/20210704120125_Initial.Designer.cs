@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DB.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210702183305_Initial")]
+    [Migration("20210704120125_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,9 @@ namespace DB.Migrations
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
+
+                    b.Property<double>("Height")
+                        .HasColumnType("float");
 
                     b.Property<int?>("MedicalRecordId")
                         .HasColumnType("int");

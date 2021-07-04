@@ -44,7 +44,12 @@ namespace DB.Models
         public double Age { get; set; }
 
         [Required]
+        [Display(Name = "Weight (kg)")]
         public double Weight { get; set; }
+
+        [Required]
+        [Display(Name = "Height (m)")]
+        public double Height { get; set; }
 
         [Required]
         public Zone ClimatZone { get; set; }

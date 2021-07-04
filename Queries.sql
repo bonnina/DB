@@ -2,7 +2,8 @@
 @vet INT, @cleaner INT, @trainer INT,
 @tropical INT, @subtropical INT,
 @rabies INT, 
-@carnivore INT, @fish INT;
+@carnivore INT, 
+@fish INT, @grass INT;
 
 SET @male = 0;
 SET @female = 1;
@@ -13,6 +14,7 @@ SET @tropical = 2;
 SET @subtropical = 3;
 SET @rabies = 9;
 SET @carnivore = 0;
+SET @grass = 0;
 SET @fish = 8;
 
 SELECT * FROM Workers
@@ -118,7 +120,7 @@ AND Deliveries.Price < 5;
 SELECT Suppliers.Id, Foods.Id, Foods.SupplierId, Foods.Type
 FROM Suppliers
 JOIN Foods on Foods.SupplierId = Suppliers.Id
-WHERE Suppliers.Name = 'Self'
+WHERE Suppliers.Name = 'Self';
 
 SELECT Suppliers.Id, Suppliers.Name, Deliveries.SupplierId, Deliveries.ProductId, SUM(Deliveries.Amount) as amount 
 FROM Suppliers
@@ -126,4 +128,60 @@ JOIN Deliveries
 ON Deliveries.SupplierId = Suppliers.Id
 JOIN Foods on Deliveries.ProductId = Foods.Id
 WHERE Suppliers.Name = 'Self'
-GROUP BY Suppliers.Id, Suppliers.Name, Deliveries.SupplierId, Deliveries.ProductId
+GROUP BY Suppliers.Id, Suppliers.Name, Deliveries.SupplierId, Deliveries.ProductId;
+
+SELECT * FROM Animals
+JOIN Meals
+ON Animals.MenuId = Meals.MenuId
+JOIN Foods
+on Foods.Id = Meals.FoodId
+WHERE Foods.Type = @fish;
+
+SELECT COUNT(*) FROM Animals
+JOIN Meals
+ON Animals.MenuId = Meals.MenuId
+JOIN Foods
+on Foods.Id = Meals.FoodId
+WHERE Foods.Type = @grass;
+
+/**/
+
+SELECT * FROM Animals
+JOIN MedicalRecords
+ON Animals.MedicalRecordId = MedicalRecords.Id
+WHERE MedicalRecords.ExpectingChildren = 'true'
+AND cast (MedicalRecords.DateExpectingChildren as date) > '2021-07-01'
+AND cast (MedicalRecords.DateExpectingChildren as date) < '2023-12-31';
+
+SELECT COUNT(ZooName) from Trades;
+
+SELECT * from Trades
+JOIN Animals
+On Trades.AnimalId = Animals.Id
+WHERE Animals.Species = 'Fox';
+
+SELECT * FROM Animals
+JOIN Vaccinations
+ON Animals.MedicalRecordId = Vaccinations.MedicalRecordId
+JOIN Illnesses
+ON Animals.MedicalRecordId = Illnesses.MedicalRecordId
+JOIN MedicalRecords
+ON Animals.MedicalRecordId = MedicalRecords.Id;
+
+SELECT * FROM Animals
+JOIN Vaccinations
+ON Animals.MedicalRecordId = Vaccinations.MedicalRecordId
+JOIN Illnesses
+ON Animals.MedicalRecordId = Illnesses.MedicalRecordId
+JOIN MedicalRecords
+ON Animals.MedicalRecordId = MedicalRecords.Id
+WHERE Animals.Name = 'Motty'
+
+SELECT * FROM Animals
+JOIN Vaccinations
+ON Animals.MedicalRecordId = Vaccinations.MedicalRecordId
+JOIN Illnesses
+ON Animals.MedicalRecordId = Illnesses.MedicalRecordId
+JOIN MedicalRecords
+ON Animals.MedicalRecordId = MedicalRecords.Id
+WHERE Animals.EnclosureNumber = 125

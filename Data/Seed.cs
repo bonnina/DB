@@ -929,6 +929,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Male,
                         Age = 5,
                         Weight = 175.5,
+                        Height = 1.8,
                         ClimatZone = Animal.Zone.Temperate,
                         DietType = Animal.Diet.Carnivore,
                         EnclosureNumber = 125,
@@ -945,6 +946,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Female,
                         Age = 17,
                         Weight = 1504,
+                        Height = 2.5,
                         ClimatZone = Animal.Zone.Tropical,
                         DietType = Animal.Diet.Herbivore,
                         EnclosureNumber = 75,
@@ -961,6 +963,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Female,
                         Age = 4,
                         Weight = 560,
+                        Height = 1,
                         ClimatZone = Animal.Zone.Subtropical,
                         DietType = Animal.Diet.Carnivore,
                         EnclosureNumber = 101,
@@ -977,6 +980,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Male,
                         Age = 8,
                         Weight = 100,
+                        Height = 1.3,
                         ClimatZone = Animal.Zone.Temperate,
                         DietType = Animal.Diet.Carnivore,
                         EnclosureNumber = 23,
@@ -993,6 +997,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Male,
                         Age = 5,
                         Weight = 500,
+                        Height = 1.2,
                         ClimatZone = Animal.Zone.Subtropical,
                         DietType = Animal.Diet.Carnivore,
                         EnclosureNumber = 100,
@@ -1009,6 +1014,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Female,
                         Age = 3,
                         Weight = 2500,
+                        Height = 1.5,
                         ClimatZone = Animal.Zone.Subtropical,
                         DietType = Animal.Diet.Herbivore,
                         EnclosureNumber = 55,
@@ -1025,6 +1031,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Female,
                         Age = 5,
                         Weight = 140,
+                        Height = 0.8,
                         ClimatZone = Animal.Zone.Subtropical,
                         DietType = Animal.Diet.Carnivore,
                         EnclosureNumber = 55,
@@ -1041,6 +1048,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Female,
                         Age = 1,
                         Weight = 470,
+                        Height = 1.9,
                         ClimatZone = Animal.Zone.Subtropical,
                         DietType = Animal.Diet.Herbivore,
                         EnclosureNumber = 91,
@@ -1057,6 +1065,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Female,
                         Age = 1,
                         Weight = 1030,
+                        Height = 1.7,
                         ClimatZone = Animal.Zone.Subtropical,
                         DietType = Animal.Diet.Carnivore,
                         EnclosureNumber = 7,
@@ -1073,6 +1082,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Male,
                         Age = 2,
                         Weight = 130,
+                        Height = 0.6,
                         ClimatZone = Animal.Zone.Arctic,
                         DietType = Animal.Diet.Carnivore,
                         EnclosureNumber = 17,
@@ -1089,6 +1099,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Female,
                         Age = 3,
                         Weight = 0.5,
+                        Height = 0.3,
                         ClimatZone = Animal.Zone.Tropical,
                         DietType = Animal.Diet.Herbivore,
                         EnclosureNumber = 2,
@@ -1105,6 +1116,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Male,
                         Age = 12,
                         Weight = 90.6,
+                        Height = 1.6,
                         ClimatZone = Animal.Zone.Tropical,
                         DietType = Animal.Diet.Herbivore,
                         EnclosureNumber = 83,
@@ -1121,6 +1133,7 @@ namespace DB.Data
                         Gender = Animal.Sex.Male,
                         Age = 2,
                         Weight = 1000,
+                        Height = 4,
                         ClimatZone = Animal.Zone.Tropical,
                         DietType = Animal.Diet.Herbivore,
                         EnclosureNumber = 76,
@@ -1453,7 +1466,21 @@ namespace DB.Data
                         Date = new DateTime(2021, 05, 14),
                         TradeType = Trade.Type.Recieved,
                         Animal = context.Animals.Where(w => w.Id == 10).FirstOrDefault()
-                    }
+                    },
+                    new Trade()
+                    {
+                        ZooName = "Zoo-Berlin",
+                        Date = new DateTime(2021, 02, 13),
+                        TradeType = Trade.Type.Recieved,
+                        Animal = context.Animals.Where(w => w.Id == 8).FirstOrDefault()
+                    },
+                     new Trade()
+                     {
+                         ZooName = "Odessa Berlin",
+                         Date = new DateTime(2018, 03, 14),
+                         TradeType = Trade.Type.Recieved,
+                         Animal = context.Animals.Where(w => w.Id == 11).FirstOrDefault()
+                     }
                 );
 
                 context.SaveChanges();

@@ -45,6 +45,9 @@ namespace DB.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
+                    b.Property<double>("Height")
+                        .HasColumnType("float");
+
                     b.Property<int?>("MedicalRecordId")
                         .HasColumnType("int");
 
