@@ -1,0 +1,39 @@
+﻿@page
+@model DB.Pages.Trades.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Trade[0].ZooName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trade[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trade[0].TradeType)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Trade) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZooName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TradeType)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
