@@ -1,24 +1,23 @@
 ﻿//// -- LEVEL 1
 //// -- Tables and References
 
-// Creating tables
 Table Animals {
-    Id              INT      [pk]
+    Id              INT [pk]
     Name            NVARCHAR 
     Species         NVARCHAR 
     Gender          INT         
     Age             FLOAT 
     Weight          FLOAT 
-    Height         FLOAT 
-    ClimatZone     INT       
+    Height          FLOAT 
+    ClimatZone      INT       
     DietType        INT         
     EnclosureNumber INT     
     DateJoined      DATETIME2 
     NeedsRelocation BIT    
     MedicalRecordId INT       
-    MenuId         INT    
-    AnimalId       INT        
-    WorkerId       INT      
+    MenuId          INT    
+    AnimalId        INT        
+    WorkerId        INT      
 }
 
 Ref: Animals.MedicalRecordId > MedicalRecords.Id
@@ -26,10 +25,10 @@ Ref: Animals.MenuId > Menus.Id
 Ref: Animals.WorkerId > Workers.Id
   
 Table Deliveries {
-    Id       INT    
+    Id         INT [pk] 
     ProductId  INT   
-    Amount    FLOAT 
-    Price     DECIMAL 
+    Amount     FLOAT 
+    Price      DECIMAL 
     Date       DATETIME2
     SupplierId INT   
 }
@@ -38,7 +37,7 @@ Ref: Deliveries.SupplierId > Suppliers.Id
 Ref: Deliveries.ProductId > Foods.Id
 
 Table Foods {
-    Id        INT [pk, increment]
+    Id         INT [pk, increment]
     Type       INT
     SupplierId INT 
 }
@@ -46,7 +45,7 @@ Table Foods {
 Ref: Foods.SupplierId > Suppliers.Id
 
 Table Illnesses {
-    Id                INT  [pk]       
+    Id                INT [pk]       
     Name              INT       
     IsolationRequired BIT          
     DateStarted       DATETIME2 
@@ -57,7 +56,7 @@ Table Illnesses {
 Ref: Illnesses.MedicalRecordId > MedicalRecords.Id
 
 Table Meals {
-    Id     INT  [pk]
+    Id     INT [pk]
     FoodId INT  
     Amount FLOAT 
     Time   TIME 
@@ -68,24 +67,24 @@ Ref: Meals.FoodId > Foods.Id
 Ref: Meals.MenuId > Menus.Id
 
 Table MedicalRecords {
-    Id     INT  [pk]       
-    Fertility      BIT    
-    ExpectingChildren   BIT    
+    Id                    INT [pk]       
+    Fertility             BIT    
+    ExpectingChildren     BIT    
     DateExpectingChildren DATETIME2 
 }
 
 Table Menus {
-     Id   INT  [pk]
+     Id INT [pk]
 }
 
 Table Suppliers {
-   Id        INT [pk, increment]
-   Name      NVARCHAR 
+   Id         INT [pk, increment]
+   Name       NVARCHAR 
    DateJoined DATETIME2 
 }
 
 Table Trades {
-    Id  INT [pk, increment]
+    Id        INT [pk, increment]
     ZooName   NVARCHAR 
     Date      DATETIME2 
     TradeType INT         
@@ -95,16 +94,16 @@ Table Trades {
 Ref: Trades.AnimalId > Animals.Id
 
 Table Vaccinations {
-    Id   INT  [pk]
-    Vaccine   INT     
-    Date    DATETIME2 
+    Id              INT [pk]
+    Vaccine         INT     
+    Date            DATETIME2 
     MedicalRecordId INT   
 }
 
 Ref: Vaccinations.MedicalRecordId > MedicalRecords.Id
 
 Table Workers {
-    Id   INT  [pk]
+    Id         INT [pk]
     FirstName  NVARCHAR
     LastName   NVARCHAR 
     Gender     INT    
