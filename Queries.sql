@@ -60,10 +60,10 @@ AND Gender = @female
 ORDER BY Name ASC;
 
 SELECT COUNT(*) FROM Animals
-WHERE EnclosureNumber = 125
-AND Age = 5
-AND Weight < 100
-AND Gender = @male;
+WHERE EnclosureNumber = 75
+AND Age > 10
+AND Weight > 500
+AND Gender = @female;
 
 SELECT * FROM Animals
 Where Age = 3
@@ -71,7 +71,8 @@ AND (ClimatZone = @tropical
 OR ClimatZone = @subtropical);
 
 SELECT COUNT(*) FROM Animals
-Where ClimatZone = @tropical
+Where Age = 3
+AND ClimatZone = @tropical
 OR ClimatZone = @subtropical;
 
 SELECT * FROM Animals
@@ -81,7 +82,8 @@ JOIN MedicalRecords
 ON Animals.MedicalRecordId = MedicalRecords.Id
 WHERE cast (Vaccinations.Date as date) > '2021-06-01'
 AND MedicalRecords.ExpectingChildren = 'true'
-AND Animals.Age > 2;
+AND Animals.Age > 2
+ORDER BY Animals.DateJoined;
 
 SELECT COUNT(*) FROM Animals
 JOIN Illnesses
@@ -135,7 +137,8 @@ JOIN Meals
 ON Animals.MenuId = Meals.MenuId
 JOIN Foods
 on Foods.Id = Meals.FoodId
-WHERE Foods.Type = @fish;
+WHERE Foods.Type = @fish
+AND Animals.Species = 'Elephant';
 
 SELECT COUNT(*) FROM Animals
 JOIN Meals
@@ -143,22 +146,6 @@ ON Animals.MenuId = Meals.MenuId
 JOIN Foods
 on Foods.Id = Meals.FoodId
 WHERE Foods.Type = @grass;
-
-/**/
-
-SELECT * FROM Animals
-JOIN MedicalRecords
-ON Animals.MedicalRecordId = MedicalRecords.Id
-WHERE MedicalRecords.ExpectingChildren = 'true'
-AND cast (MedicalRecords.DateExpectingChildren as date) > '2021-07-01'
-AND cast (MedicalRecords.DateExpectingChildren as date) < '2023-12-31';
-
-SELECT COUNT(ZooName) from Trades;
-
-SELECT * from Trades
-JOIN Animals
-On Trades.AnimalId = Animals.Id
-WHERE Animals.Species = 'Fox';
 
 SELECT * FROM Animals
 JOIN Vaccinations
@@ -185,3 +172,17 @@ ON Animals.MedicalRecordId = Illnesses.MedicalRecordId
 JOIN MedicalRecords
 ON Animals.MedicalRecordId = MedicalRecords.Id
 WHERE Animals.EnclosureNumber = 125
+
+SELECT * FROM Animals
+JOIN MedicalRecords
+ON Animals.MedicalRecordId = MedicalRecords.Id
+WHERE MedicalRecords.ExpectingChildren = 'true'
+AND cast (MedicalRecords.DateExpectingChildren as date) > '2021-07-01'
+AND cast (MedicalRecords.DateExpectingChildren as date) < '2023-12-31';
+
+SELECT COUNT(ZooName) from Trades;
+
+SELECT * from Trades
+JOIN Animals
+On Trades.AnimalId = Animals.Id
+WHERE Animals.Species = 'Fox';
